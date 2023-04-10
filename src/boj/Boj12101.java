@@ -129,5 +129,4 @@ public class Boj12101 {
             System.out.println(arr[n].get(k-1));
         }
     }
-
 }
