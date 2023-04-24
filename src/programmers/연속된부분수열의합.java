@@ -2,6 +2,11 @@ package programmers;
 
 import java.util.Arrays;
 
+/**
+ * 프로그래머스 - 연속된 부분 수열의 합
+ * Lv 2
+ * https://school.programmers.co.kr/learn/courses/30/lessons/178870
+ */
 public class 연속된부분수열의합 {
 
     public static void main(String[] args) {
