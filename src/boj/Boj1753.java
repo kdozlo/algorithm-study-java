@@ -11,7 +11,6 @@ import java.util.*;
  * 골드 4
  * https://www.acmicpc.net/problem/1753
  */
-
 class Node implements Comparable<Node>{
     int end;
     int w;
