@@ -26,20 +26,20 @@ public class 괄호회전하기 {
     public static boolean checkBracket (String s) {
         Stack<Character> stack = new Stack<>();
 
-        if(!s.contains("[") || !s.contains("(") || !s.contains("{"))
-            return false;
-
         for(Character c : s.toCharArray()) {
-            if (c == '[' || c == '(' || c =='{') {
-                stack.push(c);
-            } else if (c == ']' && !stack.isEmpty() && stack.peek() == '[') {
-                stack.pop();
-            } else if (c == ')' && !stack.isEmpty() && stack.peek() == '(') {
-                stack.pop();
-            } else if (c == '}' && !stack.isEmpty() && stack.peek() == '{') {
-                stack.pop();
+            try {
+                if (c == '[' || c == '(' || c =='{') {
+                    stack.push(c);
+                } else if (c == ']' && stack.peek() == '[') {
+                    stack.pop();
+                } else if (c == ')' && stack.peek() == '(') {
+                    stack.pop();
+                } else if (c == '}' && stack.peek() == '{') {
+                    stack.pop();
+                }
+            } catch (Exception e) {
+                return false;
             }
-
         }
 
         if(stack.isEmpty())
