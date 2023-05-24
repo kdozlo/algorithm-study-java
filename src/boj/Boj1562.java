@@ -10,7 +10,7 @@ import java.util.Arrays;
  * 계단 수
  * 골드 1
  * https://www.acmicpc.net/problem/1562
- * 못품 너무 어렵
+ * 못품 너무 어렵다.
  */
 public class Boj1562 {
 
