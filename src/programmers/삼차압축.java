@@ -19,7 +19,6 @@ public class 삼차압축 {
             char c = (char) i;
             dic.put(Character.toString(c), i - (int)'A' + 1);
         }
-
         int curIndex = 27;
         for(int i = 0; i < msg.length(); i++) {
             String w = msg.charAt(i) + "";
