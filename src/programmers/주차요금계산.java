@@ -21,10 +21,6 @@ public class 주차요금계산 {
         for(String r : records) {
             String[] temp = r.split(" ");
 
-            if(inTime.containsKey(temp[1])) {
-
-            }
-
             if(temp[2].equals("IN")) {
                 inTime.put(temp[1], hourToMin(temp[0]));
             } else if(temp[2].equals("OUT")) {
