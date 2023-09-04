@@ -1,6 +1,5 @@
 package boj;
 
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -59,14 +58,15 @@ public class b1062 {
 
             // 읽을 수 있는 단어 세기
             for(int i = 0; i < n; i++) {
-                int count = 0;
+                boolean flag = true;
                 for(char c : dic[i].toCharArray()) {
-                    if(check[(int)c - 97]) {
-                         count += 1;
+                    if(!check[(int)c - 97]) {
+                        flag = false;
+                        break;
                     }
                 }
 
-                if(count == dic[i].length())
+                if(flag)
                     tempAnswer++;
             }
 
