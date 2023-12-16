@@ -9,6 +9,81 @@ import java.io.*;
  * 골드 2
  * https://www.acmicpc.net/problem/1765
  */
+//dfs로
+public class b1765 {
+
+    static List<Integer>[] e;
+    static List<Integer>[] team;
+    static boolean[] selected;
+
+    public static void main(String[] args) throws IOException {
+
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st = new StringTokenizer(br.readLine());
+
+        int n = Integer.parseInt(st.nextToken()); //student num
+        st = new StringTokenizer(br.readLine());
+        int m = Integer.parseInt(st.nextToken()); //relation num
+
+        e = new ArrayList[n + 1];
+        team = new ArrayList[n + 1];
+
+        for(int i = 0; i <= n; i++) {
+            e[i] = new ArrayList<Integer>();
+            team[i] = new ArrayList<Integer>();
+        }
+
+        for(int i = 0; i < m; i++) {
+            st = new StringTokenizer(br.readLine());
+            String s = st.nextToken();
+            int p = Integer.parseInt(st.nextToken());
+            int q = Integer.parseInt(st.nextToken());
+
+            if(s.equals("E")) {
+                e[p].add(q);
+                e[q].add(p);
+            } else {
+
+                team[p].add(q);
+                team[q].add(p);
+            }
+        }
+
+        //원수의 원수 추가
+        for(int i = 1; i < n + 1; i++) {
+            for(int j = 0; j < e[i].size() - 1; j++) {
+                team[e[i].get(j)].add(e[i].get(j + 1));
+                team[e[i].get(j + 1)].add(e[i].get(j));
+            }
+        }
+
+        int answer = 0;
+        selected = new boolean[n + 1];
+
+        for(int i = 1; i < n + 1; i++) {
+            if(!selected[i]) {
+                selected[i] = true;
+                dfs(i);
+                answer++;
+            }
+        }
+
+        System.out.println(answer);
+    }
+
+    public static void dfs(int cur) {
+        for(int i : team[cur]) {
+
+            if(!selected[i]) {
+                selected[i] = true;
+                dfs(i);
+            }
+
+        }
+    }
+
+}
+
 ////union find
 //public class b1765 {
 //
@@ -84,78 +159,3 @@ import java.io.*;
 //        return true;
 //    }
 //}
-
-//dfs로
-public class b1765 {
-
-    static List<Integer>[] e;
-    static List<Integer>[] team;
-    static boolean[] selected;
-
-    public static void main(String[] args) throws IOException {
-
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer st = new StringTokenizer(br.readLine());
-
-        int n = Integer.parseInt(st.nextToken()); //student num
-        st = new StringTokenizer(br.readLine());
-        int m = Integer.parseInt(st.nextToken()); //relation num
-
-        e = new ArrayList[n + 1];
-        team = new ArrayList[n + 1];
-
-        for(int i = 0; i <= n; i++) {
-            e[i] = new ArrayList<Integer>();
-            team[i] = new ArrayList<Integer>();
-        }
-
-        for(int i = 0; i < m; i++) {
-            st = new StringTokenizer(br.readLine());
-            String s = st.nextToken();
-            int p = Integer.parseInt(st.nextToken());
-            int q = Integer.parseInt(st.nextToken());
-
-            if(s.equals("E")) {
-                e[p].add(q);
-                e[q].add(p);
-            } else {
-
-                team[p].add(q);
-                team[q].add(p);
-            }
-        }
-
-        //원수의 원수 추가
-        for(int i = 1; i < n + 1; i++) {
-            for(int j = 0; j < e[i].size() - 1; j++) {
-                team[e[i].get(j)].add(e[i].get(j + 1));
-                team[e[i].get(j + 1)].add(e[i].get(j));
-            }
-        }
-
-        int answer = 0;
-        selected = new boolean[n + 1];
-
-        for(int i = 1; i < n + 1; i++) {
-            if(!selected[i]) {
-                selected[i] = true;
-                dfs(i);
-                answer++;
-            }
-        }
-
-        System.out.println(answer);
-    }
-
-    public static void dfs(int cur) {
-        for(int i : team[cur]) {
-
-            if(!selected[i]) {
-                selected[i] = true;
-                dfs(i);
-            }
-
-        }
-    }
-
-}
