@@ -9,7 +9,7 @@ import java.util.*;
  * 실버 5
  * https://www.acmicpc.net/problem/10815
  */
-public class b10815 {
+public class BOJ10815 {
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
