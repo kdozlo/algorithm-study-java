@@ -6,7 +6,7 @@ import java.io.*;
 /**
 * 백준 11403
 * 경로 찾기
-* 골드
+* 실버1
 * https://www.acmicpc.net/problem/11403
 */
 public class Boj11403 {
