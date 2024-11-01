@@ -6,7 +6,7 @@ import java.io.*;
 /**
 * 백준 6497
 * 전력난
-* 골드
+* 골드4
 * https://www.acmicpc.net/problem/6497
 */
 public class Boj6497 {
