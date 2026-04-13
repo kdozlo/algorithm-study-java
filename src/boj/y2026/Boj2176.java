@@ -58,35 +58,17 @@ public class Boj2176 {
             graph[b].add(new Node(a, c));
         }
 
+        dp = new int[N + 1];
         dijkstra(2);
 
-        dp = new int[N + 1];
-        Arrays.fill(dp, -1);
-        System.out.println(counting(1));
-    }
-
-    private static int counting(int cur) {
-        if(cur == 2)
-            return 1;
-
-        if(dp[cur] != -1)
-            return dp[cur];
-
-        dp[cur] = 0;
-
-        for(Node n : graph[cur]) {
-            if(distance[cur] > distance[n.index]) {
-                dp[cur] += counting(n.index);
-            }
-        }
-
-        return dp[cur];
+        System.out.println(dp[1]);
     }
 
     private static void dijkstra(int start) {
         PriorityQueue<Node> pq = new PriorityQueue<>();
         pq.add(new Node(start, 0));
         distance[start] = 0;
+        dp[2] = 1;
 
         while(!pq.isEmpty()) {
             Node cur = pq.poll();
@@ -101,6 +83,9 @@ public class Boj2176 {
                     distance[n.index] = dist;
                     pq.add(new Node(n.index, dist));
                 }
+
+                if(distance[n.index] > distance[cur.index])
+                    dp[n.index] += dp[cur.index];
             }
         }
     }
